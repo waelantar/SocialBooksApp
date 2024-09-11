@@ -33,3 +33,6 @@ application:
     jwt:
       secret-key: ${TOKEN_KEY}
       expiration: ${TOKEN_EXPIRATION}
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account

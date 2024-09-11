@@ -4,6 +4,7 @@ package com.projects.socialbooksappbackend.Service;
 import com.projects.socialbooksappbackend.Dto.RegistrationRequest;
 import com.projects.socialbooksappbackend.Entity.Token;
 import com.projects.socialbooksappbackend.Entity.User;
+import com.projects.socialbooksappbackend.Enum.EmailTemplateName;
 import com.projects.socialbooksappbackend.Repository.RoleRepository;
 import com.projects.socialbooksappbackend.Repository.TokenRepository;
 import com.projects.socialbooksappbackend.Repository.UserRepository;
@@ -30,9 +31,9 @@ public class AuthenticationService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
-    private final AuthenticationManager authenticationManager;
     private final RoleRepository roleRepository;
     private final TokenRepository tokenRepository;
+    private final EmailService emailService;
 
     @Value("${application.mailing.frontend.activation-url}")
     private String activationUrl;
@@ -51,7 +52,7 @@ public class AuthenticationService {
                 .build();
         userRepository.save(user);
     }
-    private String generateAndSaveActivationToken(User user) {
+    private String generateAndSaveActivationToken(User user) throws MessagingException {
         // Generate a token
         String generatedToken = generateActivationCode(6);
         var token = Token.builder()
