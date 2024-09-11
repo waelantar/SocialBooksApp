@@ -1,1 +1,13 @@
-spring.application.name=SocialBooksAppBackend
+spring:
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 55MB
+
+springdoc:
+  default-produces-media-type: application/json
+server:
+  servlet:
+    context-path: /api/v1/
