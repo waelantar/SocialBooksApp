@@ -57,9 +57,9 @@ public class AuthenticationService {
                 .build();
     }
 
-    @Transactional
+
     public void activateAccount(String token) throws MessagingException {
-        Token savedToken = tokenRepository.findByToken(token)
+        Token savedToken = tokenRepository.findByToken(token.replaceAll("\\s+",""))
                 // todo exception has to be defined
                 .orElseThrow(() -> new RuntimeException("Invalid token"));
         if (LocalDateTime.now().isAfter(savedToken.getExpiresAt())) {
