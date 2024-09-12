@@ -54,14 +54,14 @@ public class EmailService {
         Context context = new Context();
         context.setVariables(properties);
 
-        helper.setFrom("antarwael189@gmail.com");
+        helper.setFrom("contact@wael.com");
         helper.setTo(to);
         helper.setSubject(subject);
 
         String template = templateEngine.process(templateName, context);
 
         helper.setText(template, true);
-
+        System.out.println("template");
         mailSender.send(mimeMessage);
     }
 }

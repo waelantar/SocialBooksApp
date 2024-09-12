@@ -51,6 +51,8 @@ public class AuthenticationService {
                 .roles(List.of(userRole))
                 .build();
         userRepository.save(user);
+        sendValidationEmail(user);
+
     }
     private String generateAndSaveActivationToken(User user) throws MessagingException {
         // Generate a token
@@ -62,7 +64,7 @@ public class AuthenticationService {
                 .user(user)
                 .build();
         tokenRepository.save(token);
-        sendValidationEmail(user);
+
 
         return generatedToken;
     }

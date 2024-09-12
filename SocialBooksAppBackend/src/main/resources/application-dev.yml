@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/book_social_network
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    username: username
+    password: password
   jpa:
     hibernate:
       ddl-auto: update
@@ -31,8 +31,10 @@ spring:
 application:
   security:
     jwt:
-      secret-key: ${TOKEN_KEY}
+      secret-key: 61bdc0096c022e19f092d700850725e38f5eaa65deb3f48fbe8a21bec5af58d0
       expiration: ${TOKEN_EXPIRATION}
   mailing:
     frontend:
       activation-url: http://localhost:4200/activate-account
+server:
+  port: 8088
