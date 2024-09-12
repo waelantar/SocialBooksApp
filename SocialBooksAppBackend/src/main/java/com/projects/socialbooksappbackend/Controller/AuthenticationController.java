@@ -1,5 +1,7 @@
 package com.projects.socialbooksappbackend.Controller;
 
+import com.projects.socialbooksappbackend.Dto.AuthenticationRequest;
+import com.projects.socialbooksappbackend.Dto.AuthenticationResponse;
 import com.projects.socialbooksappbackend.Dto.RegistrationRequest;
 import com.projects.socialbooksappbackend.Service.AuthenticationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -37,5 +39,11 @@ public class AuthenticationController {
             @RequestParam String token
     ) throws MessagingException {
         service.activateAccount(token);
+    }
+    @PostMapping("/authenticate")
+    public ResponseEntity<AuthenticationResponse> authenticate(
+            @RequestBody AuthenticationRequest request
+    ) {
+        return ResponseEntity.ok(service.authenticate(request));
     }
 }
