@@ -2,7 +2,9 @@ package com.projects.socialbooksappbackend.Mapper;
 
 import com.projects.socialbooksappbackend.Dto.BookRequest;
 import com.projects.socialbooksappbackend.Dto.BookResponse;
+import com.projects.socialbooksappbackend.Dto.BorrowedBookResponse;
 import com.projects.socialbooksappbackend.Entity.Book;
+import com.projects.socialbooksappbackend.Entity.BookTransactionHistory;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,6 +32,17 @@ public class BookMapper {
                 .shareable(book.isShareable())
                 // .owner(book.getOwner().fullName())
                 //.cover(FileUtils.readFileFromLocation(book.getBookCover()))
+                .build();
+    }
+    public BorrowedBookResponse toBorrowedBookResponse(BookTransactionHistory history) {
+        return BorrowedBookResponse.builder()
+                .id(history.getBook().getId())
+                .title(history.getBook().getTitle())
+                .authorName(history.getBook().getAuthorName())
+                .isbn(history.getBook().getIsbn())
+                .rate(history.getBook().getRate())
+                .returned(history.isReturned())
+                .returnApproved(history.isReturnApproved())
                 .build();
     }
 }
