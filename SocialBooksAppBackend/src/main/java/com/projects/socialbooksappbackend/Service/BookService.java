@@ -7,6 +7,7 @@ import com.projects.socialbooksappbackend.Dto.BorrowedBookResponse;
 import com.projects.socialbooksappbackend.Entity.Book;
 import com.projects.socialbooksappbackend.Entity.BookTransactionHistory;
 import com.projects.socialbooksappbackend.Entity.User;
+import com.projects.socialbooksappbackend.Exception.OperationNotPermittedException;
 import com.projects.socialbooksappbackend.Mapper.BookMapper;
 import com.projects.socialbooksappbackend.Repository.BookRepository;
 import com.projects.socialbooksappbackend.Repository.BookTransactionHistoryRepository;
@@ -22,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
 import java.util.List;
+import java.util.Objects;
 
 import static com.projects.socialbooksappbackend.Specification.BookSpecification.withOwnerId;
 
@@ -114,5 +116,28 @@ public class BookService {
                 allBorrowedBooks.isFirst(),
                 allBorrowedBooks.isLast()
         );
+    }
+    public Integer updateShareableStatus(Integer bookId, Authentication connectedUser) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new EntityNotFoundException("No book found with ID:: " + bookId));
+        // User user = ((User) connectedUser.getPrincipal());
+        if (!Objects.equals(book.getCreatedBy(), connectedUser.getName())) {
+            throw new OperationNotPermittedException("You cannot update others books shareable status");
+        }
+        book.setShareable(!book.isShareable());
+        bookRepository.save(book);
+        return bookId;
+    }
+
+    public Integer updateArchivedStatus(Integer bookId, Authentication connectedUser) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new EntityNotFoundException("No book found with ID:: " + bookId));
+        // User user = ((User) connectedUser.getPrincipal());
+        if (!Objects.equals(book.getCreatedBy(), connectedUser.getName())) {
+            throw new OperationNotPermittedException("You cannot update others books archived status");
+        }
+        book.setArchived(!book.isArchived());
+        bookRepository.save(book);
+        return bookId;
     }
 }
