@@ -5,6 +5,7 @@ import com.projects.socialbooksappbackend.Dto.BookResponse;
 import com.projects.socialbooksappbackend.Dto.BorrowedBookResponse;
 import com.projects.socialbooksappbackend.Entity.Book;
 import com.projects.socialbooksappbackend.Entity.BookTransactionHistory;
+import com.projects.socialbooksappbackend.Utils.FileUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,8 +31,8 @@ public class BookMapper {
                 .rate(book.getRate())
                 .archived(book.isArchived())
                 .shareable(book.isShareable())
-                // .owner(book.getOwner().fullName())
-                //.cover(FileUtils.readFileFromLocation(book.getBookCover()))
+                .owner(book.getOwner().fullName())
+                .cover(FileUtils.readFileFromLocation(book.getBookCover()))
                 .build();
     }
     public BorrowedBookResponse toBorrowedBookResponse(BookTransactionHistory history) {
