@@ -1,6 +1,6 @@
 package com.projects.socialbooksappbackend.Repository;
 
-import com.projects.socialbooksappbackend.Enum.Feedback;
+import com.projects.socialbooksappbackend.Entity.Feedback;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

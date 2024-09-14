@@ -3,7 +3,7 @@ package com.projects.socialbooksappbackend.Mapper;
 import com.projects.socialbooksappbackend.Dto.FeedbackRequest;
 import com.projects.socialbooksappbackend.Dto.FeedbackResponse;
 import com.projects.socialbooksappbackend.Entity.Book;
-import com.projects.socialbooksappbackend.Enum.Feedback;
+import com.projects.socialbooksappbackend.Entity.Feedback;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
