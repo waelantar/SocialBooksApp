@@ -31,7 +31,14 @@ constructor(
       this.router.navigate(['books']);
     },
   error:(err):void =>{
-      console.log(err);
+      console.log(err.error);
+      if(err.error.validationErrors)
+      {
+        this.errorMsg=err.error.validationErrors;
+      }
+      else {
+        this.errorMsg.push(err.error.error);
+      }
   }})
   }
   register() {
