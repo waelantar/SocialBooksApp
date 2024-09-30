@@ -45,7 +45,10 @@ public class BookService {
     public Integer save(BookRequest request, Authentication connectedUser) {
          User user = ((User) connectedUser.getPrincipal());
         Book book = bookMapper.toBook(request);
-         book.setOwner(user);
+        System.out.println("from service "+book.getId());
+
+        book.setOwner(user);
+         System.out.println("from service "+bookRepository.save(book).getId());
         return bookRepository.save(book).getId();
     }
     public BookResponse findById(Integer bookId) {
