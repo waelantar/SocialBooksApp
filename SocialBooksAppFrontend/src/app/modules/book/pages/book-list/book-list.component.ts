@@ -3,6 +3,7 @@ import {BookService} from "../../../../services/services/book.service";
 import {Router} from "@angular/router";
 import {PageResponseBookResponse} from "../../../../services/models/page-response-book-response";
 import {BookCardComponent} from "../../components/book-card/book-card.component";
+import {BookResponse} from "../../../../services/models/book-response";
 
 @Component({
   selector: 'app-book-list',
@@ -73,5 +74,15 @@ export class BookListComponent implements OnInit {
 
   get isLastPage() {
     return this.page === this.bookResponse.totalPages as number - 1;
+  }
+  borrowBook(book: BookResponse) {
+    this.message='';
+    this.bookService.borrowBook({
+      'book-id': book.id as number,
+    }).subscribe({
+      next: () => {
+        this.message='Book successfully added to your list';
+      }
+    });
   }
 }
