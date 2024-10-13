@@ -5,3 +5,15 @@
   width: 800px !important;
   margin-top: 15%;
 }
+* {
+  text-transform: none !important;
+}
+/* Reset text-transform for Bootstrap buttons */
+.btn {
+  text-transform: none !important;
+}
+
+/* Reset text-transform for Bootstrap card titles */
+.card-title {
+  text-transform: none !important;
+}

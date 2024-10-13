@@ -16,12 +16,11 @@ export interface UploadCoverPicture$Params {
 }
 }
 
-export function uploadCoverPicture(http: HttpClient, rootUrl: string, params: UploadCoverPicture$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-}>> {
+export function uploadCoverPicture(http: HttpClient, rootUrl: string, params: UploadCoverPicture$Params, context?: HttpContext): Observable<StrictHttpResponse<{}>> {
   const rb = new RequestBuilder(rootUrl, uploadCoverPicture.PATH, 'post');
   if (params) {
     rb.path('book-id', params['book-id'], {});
-    rb.body(params.body, 'multipart/from-date');
+    rb.body(params.body, 'multipart/form-data'); // Corrected content type
   }
 
   return http.request(
@@ -29,10 +28,10 @@ export function uploadCoverPicture(http: HttpClient, rootUrl: string, params: Up
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<{
-      }>;
+      return r as StrictHttpResponse<{}>;
     })
   );
 }
 
 uploadCoverPicture.PATH = '/books/cover/{book-id}';
+
