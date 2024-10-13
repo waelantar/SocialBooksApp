@@ -36,9 +36,9 @@ private _manage:boolean=false;
   private _bookCover:string | undefined;
 
   get bookCover(): string | undefined {
-    if(this._bookCover)
+    if(this._book.cover)
     {
-      return 'data:image/jpg;base64,' + this._book.cover
+      return 'data:image/jpg;base64, ' + this._book.cover
     }
     return '//www.html.am/images/html-codes/links/boracay-white-beach-sunset-300x225.jpg';
   }
