@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+
 @Getter
 @Setter
 @SuperBuilder
@@ -21,7 +22,7 @@ public class BookTransactionHistory extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
