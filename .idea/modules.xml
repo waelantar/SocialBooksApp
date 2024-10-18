@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SocialBooksApp.iml" filepath="$PROJECT_DIR$/.idea/SocialBooksApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SocialBooksAppBackend/SocialBooksAppBackend.iml" filepath="$PROJECT_DIR$/SocialBooksAppBackend/SocialBooksAppBackend.iml" />
     </modules>
   </component>
 </project>
