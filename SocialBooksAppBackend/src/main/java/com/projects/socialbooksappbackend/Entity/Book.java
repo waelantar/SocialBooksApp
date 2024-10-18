@@ -26,7 +26,7 @@ public class Book extends BaseEntity {
     private String bookCover;
     private boolean archived;
     private boolean shareable;
-     @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "owner_id")
     private User owner;
     @OneToMany(mappedBy = "book")

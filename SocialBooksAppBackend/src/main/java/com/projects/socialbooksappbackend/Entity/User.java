@@ -56,8 +56,9 @@ public class User implements UserDetails, Principal {
     private List<Role> roles;
     @OneToMany(mappedBy = "owner")
     private List<Book> books;
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     private List<BookTransactionHistory> histories;
+
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdDate;
