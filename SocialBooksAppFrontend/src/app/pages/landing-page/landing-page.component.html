@@ -1,0 +1,33 @@
+<main class="book-exchange-container" role="main">
+  <div class="content">
+    <header>
+      <h1>BOOK EXCHANGE</h1>
+      <p class="tagline">Share Knowledge, Discover Stories</p>
+    </header>
+    <section class="book-images" aria-hidden="true">
+      <div class="book book-blue" [@bookAnimation]="'blue'"></div>
+      <div class="book book-green" [@bookAnimation]="'green'"></div>
+      <div class="book book-pink" [@bookAnimation]="'pink'"></div>
+    </section>
+    <section class="description">
+      <h2>Join Our Reading Community</h2>
+      <p>
+        Connect with fellow book lovers, swap your favorite reads, and discover new stories.
+        Our Book Exchange app brings the joy of sharing literature to your fingertips.
+      </p>
+      <ul>
+        <li>Exchange books with readers worldwide</li>
+        <li>Discover hidden literary gems</li>
+        <li>Engage in thoughtful discussions</li>
+        <li>Track your reading journey</li>
+      </ul>
+    </section>
+    <section class="cta">
+      <p>Ready to start your reading adventure?</p>
+      <div class="button-group">
+        <a class="btn btn-primary" routerLink="/register" role="button">Register</a>
+        <a class="btn btn-secondary" routerLink="/login" role="button">Login</a>
+      </div>
+    </section>
+  </div>
+</main>
