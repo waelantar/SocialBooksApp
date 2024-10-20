@@ -1,4 +1,19 @@
-FROM ubuntu:latest
-LABEL authors="antar"
+FROM node:20 AS build-stage
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+FROM nginx:alpine
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+COPY --from=build-stage /app/dist/social-books-app-frontend/browser /usr/share/nginx/html
+
+EXPOSE 80

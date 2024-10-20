@@ -9,7 +9,7 @@ RUN mvn clean package -DskipTests
 # Runtime stage
 FROM amazoncorretto:17
 ARG PROFILE=dev
-ARG APP_VERSION=0.0.1-SNAPSHOT
+ARG APP_VERSION=0.0.3-SNAPSHOT
 WORKDIR /app
 COPY --from=build /build/target/SocialBooksAppBackend-*.jar /app/
 EXPOSE 8088
