@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.Projects</groupId>
 	<artifactId>SocialBooksAppBackend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>SocialBooksAppBackend</name>
 	<description>SocialBooksAppBackend</description>
 	<url/>
