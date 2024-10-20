@@ -1,31 +1,35 @@
-<div class="container-fluid card login-container">
-
-<h3 class="text-center">Login</h3>
-  <hr>
-  <div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
-    @for (msg of errorMsg;track msg){
-    <p >{{msg}} </p>}
+<main class="login-container" role="main">
+  <div class="content">
+    <header>
+      <h1>BOOK EXCHANGE</h1>
+      <p class="tagline">Welcome Back!</p>
+    </header>
+    <section class="login-form">
+      <h2>Login to Your Account</h2>
+      <div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
+        @for (msg of errorMsg; track msg) {
+          <p>{{msg}}</p>
+        }
+      </div>
+      <form (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="login">Email address</label>
+          <input [(ngModel)]="authRequest.email" type="email" id="login" name="email" placeholder="exemple@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input [(ngModel)]="authRequest.password" type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt"></i> Sign in
+          </button>
+        </div>
+      </form>
+    </section>
+    <section class="register-link">
+      <p>Don't have an account?</p>
+      <a class="btn btn-secondary" (click)="register()">Register</a>
+    </section>
   </div>
-  <div class="mb-3">
-  <label for="login" class="form-label">Email address</label>
-  <input [(ngModel)]="authRequest.email" type="email" class="form-control" id="login" placeholder="exemple@email.com">
-</div>
-
-  <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
-    <input [(ngModel)]="authRequest.password" type="password" class="form-control" id="password" placeholder="Password">
-  </div>
-
-  <div class="d-flex justify-content-between mb-3">
-    <button (click)="login()" type="button" class="btn btn-primary">
-      <i class="fas fa-sign-in-alt">&nbsp;Sign in</i>
-    </button>
-    <div>
-      Don't have an account?&nbsp;
-      <button (click)="register()" type="button" class="btn btn-link">
-        Register
-      </button>
-    </div>
-  </div>
-
-</div>
+</main>

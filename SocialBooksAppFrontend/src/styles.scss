@@ -1,10 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
-.login-container {
-  width: 800px !important;
-  margin-top: 15%;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+  --primary-color: #2c7b90;
+  --secondary-color: #9ab987;
+  --accent-color: #e17b7b;
+  --text-color: #333;
+  --background-color: #f6f2e7;
+  --error-color: #d83933;
+
 }
+
+
+
+
 * {
   text-transform: none !important;
 }
@@ -20,3 +31,4 @@
 .cursor-pointer {
   cursor: pointer !important;
 }
+html { background-color: #f6f2e7; }
