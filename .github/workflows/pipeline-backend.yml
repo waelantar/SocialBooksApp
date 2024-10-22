@@ -27,7 +27,7 @@ jobs:
       - name: Compile project
         run: |
           cd SocialBooksAppBackend
-          ./mvn clean compile
+          ./mvnw clean compile
 
   unit-tests:
     runs-on: ubuntu-20.04
@@ -45,7 +45,7 @@ jobs:
       - name: Running unit Tests
         run: |
           cd SocialBooksAppBackend
-          ./mvn clean test
+          ./mvnw clean test
 
   build:
     runs-on: ubuntu-20.04
@@ -64,7 +64,7 @@ jobs:
       - name: Build project
         run: |
           cd SocialBooksAppBackend
-          ./mvn clean package
+          ./mvnw clean package
 
   build-image:
     runs-on: ubuntu-20.04
