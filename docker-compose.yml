@@ -27,7 +27,7 @@ services:
       - 127.0.0.1:1025:1025
   bsn-api:
     container_name: bsn-api
-    image: bsn/bsn:0.0.3-SNAPSHOT
+    image: bsn/bsn:0.0.6-SNAPSHOT
     environment:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_USERNAME=${DB_USERNAME}

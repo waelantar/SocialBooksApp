@@ -1,0 +1,61 @@
+name: BSN Frontend Pipeline
+
+on:
+  push:
+    branches:
+      - ci/pipeline
+    paths:
+      - SocialBooksAppFrontend/**
+      - docker/frontend/**
+      - 'docker-compose.yml'
+      - .github/workflows/*-frontend.yml
+
+jobs:
+  build-image:
+    name: Build FE Docker image
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract project version
+        id: extract_version
+        run: |
+          cd SocialBooksAppFrontend
+          echo "JAR_VERSION=$(jq -r '.version' package.json)" >> $GITHUB_ENV
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build & Push to DockerHub
+        uses: docker/build-push-action@v5
+        with:
+          context: SocialBooksAppFrontend
+          file: docker/frontend/Dockerfile
+          push: true
+          platforms: linux/amd64
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/bsn-ui:latest,${{ secrets.DOCKERHUB_USERNAME }}/bsn-ui:${{ env.JAR_VERSION }}
+
+  deploy:
+    name: Deploy Frontend
+    runs-on: ubuntu-20.04
+    needs: [build-image]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create environment file
+        run: |
+          echo "VERSION=${{ env.VERSION }}" >> .env
+
+      - name: Deploy with Docker Compose
+        run: |
+          docker compose -f docker-compose.yml pull -q
+          docker compose -f docker-compose.yml up -d --build

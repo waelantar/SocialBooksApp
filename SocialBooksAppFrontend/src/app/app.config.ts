@@ -4,6 +4,7 @@ import {HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi
 
 import { routes } from './app.routes';
 import {HttpTokenInterceptor} from "./services/interceptor/http-token.interceptor";
+import {ApiModule} from "./services/api.module";
 
 export const appConfig: ApplicationConfig = {
   providers: [provideHttpClient(withInterceptorsFromDi()),provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
