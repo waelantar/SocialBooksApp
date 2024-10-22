@@ -62,6 +62,7 @@ jobs:
           echo "TOKEN_KEY=${{ secrets.TOKEN_KEY }}" >> .env
           echo "DB_URL=${{ secrets.DB_URL }}" >> .env
           echo "ACTIVE_PROFILE=${{ secrets.ACTIVE_PROFILE }}" >> .env
+          echo "JAR_VERSION=${{ secrets.JAR_VERSION }}" >> .env
 
       - name: Deploy with Docker Compose
         run: |
