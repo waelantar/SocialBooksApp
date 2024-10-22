@@ -45,7 +45,7 @@ jobs:
           java-version: 17
           distribution: 'corretto'
       - name: Make Maven Wrapper executable
-        run: chmod +x ./mvnw
+        run: chmod +x SocialBooksAppBackend/mvnw
       - name: Running unit Tests
         run: |
           cd SocialBooksAppBackend
@@ -66,9 +66,7 @@ jobs:
           java-version: 17
           distribution: 'corretto'
       - name: Make Maven Wrapper executable
-        run: |
-            cd SocialBooksAppBackend
-            chmod +x ./mvnw
+        run: chmod +x SocialBooksAppBackend/mvnw
       - name: Build project
         run: |
           cd SocialBooksAppBackend
@@ -89,9 +87,7 @@ jobs:
           java-version: 17
           distribution: 'corretto'
       - name: Make Maven Wrapper executable
-        run: |
-          cd SocialBooksAppBackend
-          chmod +x ./mvnw
+        run: chmod +x SocialBooksAppBackend/mvnw
       - name: Extract project version
         id: extract_version
         run: |
